@@ -1,0 +1,13 @@
+SpeechRecognition
+pyttsx3
+# PyAudio
+feedparser
+pywhatkit
+# django
+# pip install pipwin
+# pipwin install pyaudio
+pyaudio
+flask
+# cython
+# chatterbot-corpus
+# chatterbot
