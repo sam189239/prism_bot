@@ -1,6 +1,21 @@
+Prism
+A info bot. Currently, works based on keywords. NLP capabilities to be added.
+
+Commands:
+Greet
+Goodbye
+Time
+News (Latest, World, Business, Sports, Tech, Entertainment, ...)
+Covid updates
+
+
+Deploying on AWS using PM2:
+
 sudo apt install npm
 npm install pm2@latest -g
 pm2 start app.py --interpreter python3
+
+Progress:
 
 11-07-2021
 made basic voicebot using speech recognition and pytts libraries
