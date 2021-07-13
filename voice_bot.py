@@ -5,9 +5,9 @@ import datetime
 import pytz
 import wikipedia
 from wikipedia.wikipedia import search
-# from newsfetch.news import newspaper
 import feedparser
 import json
+import random
 import re
 
 with open('toi_feed_links.json', 'r') as myfile:
@@ -23,6 +23,10 @@ newVoiceRate = 178
 engine.setProperty('rate',newVoiceRate)
 engine.setProperty('voice','english-us')
 
+
+greeting = ["Hello, thanks for asking", "Good to see you again", "Hi there, how can I help?"]
+noanswer = ["Sorry, can't understand you", "Please give me more info", "Not sure I understand", "Try again", "Going to sleep!"]
+goodbye = ["See you!", "Have a nice day", "Bye! Come back again soon.", "Bye", "Cya!"]
 
 
 def talk(text):
@@ -59,7 +63,7 @@ def give_sec_command():
             print('listening...')
             
             voice = listener.listen(source)
-            sec_command = listener.recognize_google(voice)
+            sec_command = listener.recognize_google(voice) 
             sec_command = sec_command.lower()
             print(sec_command)            
     except:
@@ -71,28 +75,35 @@ def run_alexa(command):
     
     # command = give_command()
             
+    greet = True
+    bye = True
+    if greet:
+        for a in ["hi", "how are you", "is anyone there?","hey","hola", "hello", "good day"]:
+            if a in command:
+                talk(greeting[(random.randint(0,len(greeting)-1))])
+                greet = False
+
+    if bye:
+        for a in ["bye", "see you later", "goodbye", "nice chatting to you, bye", "till next time"]:
+            if a in command:
+                talk(goodbye[(random.randint(0,len(goodbye)-1))])
+                bye = False
 
     
-    if 'play' in command:
+    elif 'play' in command:
         song  = command.replace('play','')
         word = 'playing' + song
         talk(word)
         # print(word)
-        kt.playonyt(song)
+        link = kt.playonyt(song)
+        print(link)
     
     elif 'time' in command:
         
-        ti = datetime.datetime.now().strftime('%I:%M:%p')
+        ti = datetime.datetime.now(pytz.timezone("Asia/Calcutta")).strftime('%I:%M:%p')
         
         talk('The time right now is ' + ti )
-    
-    # elif 'who is' or 'give info on' in command:
-    #     person = command.replace('who is','')
-    #     person = command.replace('info on','')
-    #     data = wikipedia.summary(person,1)
-    #     print("From Wikipedia:")
-    #     print(data)
-    #     talk(data)
+
 
     elif 'search on google' in command:
         sear = command.replace('search on google','')
@@ -133,6 +144,32 @@ def run_alexa(command):
             else:
                  break
     
+    elif 'covid' in command:
+        import urllib.request as ul
+        from bs4 import BeautifulSoup as soup
+        import regex as re
+
+        url = 'https://covid19.who.int/region/searo/country/in'
+        req = ul.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
+        client = ul.urlopen(req)
+        htmldata = client.read()
+        client.close()
+
+        pagesoup = soup(htmldata, "html.parser")
+        headings = pagesoup.findAll('span', {"class":"sc-fzoYHE dZCNaz"})
+        values = pagesoup.findAll('span', {"class":"sc-fznAgC jiWVsa"})
+
+        flag=1
+        msg = "In India: "
+        for a,b in headings, values:   
+            a = (re.sub('<[^>]*>', '', str(a)))
+            b = (re.sub('<[^>]*>', '', str(b))) 
+            if flag:
+                msg += (a +",\t"+ b + "\n = ")
+                flag -= 1
+            else:
+                msg += (a +",\t"+ b + "\n")
+        
 
     elif 'who is' or 'give info on' in command:
         person = command.replace('who is','')
@@ -143,7 +180,7 @@ def run_alexa(command):
             talk(data)
     
     else:
-        talk("Going to sleep!")
+        talk(noanswer[(random.randint(0,len(noanswer)-1))])
 
 command = give_command()
 run_alexa()
