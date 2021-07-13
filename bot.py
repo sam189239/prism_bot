@@ -7,16 +7,38 @@ import feedparser
 import json
 import re
 import webbrowser
+import random
 
 
-print(__name__)
 with open('data/toi_feed_links.json', 'r') as myfile:
     data = myfile.read()
 feed_links = json.loads(data)
 
+with open('data/responses.json', 'r') as myfile:
+    data = myfile.read()
+responses = json.loads(data)
+
+greeting = ["Hello, thanks for asking", "Good to see you again", "Hi there, how can I help?"]
+noanswer = ["Sorry, can't understand you", "Please give me more info", "Not sure I understand", "Try again", "Going to sleep!"]
+goodbye = ["See you!", "Have a nice day", "Bye! Come back again soon.", "Bye", "Cya!"]
+
 def run_alexa(command):
-       
-    if 'play' in command:
+    greet = True
+    bye = True
+    if greet:
+        for a in ["hi", "how are you", "is anyone there?","hey","hola", "hello", "good day"]:
+            if a in command:
+                msg = greeting[(random.randint(0,len(greeting)-1))]
+                greet = False
+
+    if bye:
+        for a in ["bye", "see you later", "goodbye", "nice chatting to you, bye", "till next time"]:
+            if a in command:
+                msg = goodbye[(random.randint(0,len(goodbye)-1))]
+                bye = False
+
+
+    elif 'play' in command:
         song  = command.replace('play','')
         # word = 'playing' + song
         # talk(word)
@@ -89,7 +111,8 @@ def run_alexa(command):
             msg = "From Wikipedia: \n"+ data
     else:
         # talk("Going to sleep!")
-        msg = "Going to sleep!"
+        # msg = "Going to sleep!"
+        msg = noanswer[(random.randint(0,len(noanswer)-1))]
 
     return msg
 if __name__ == "__main__":
