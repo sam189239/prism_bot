@@ -23,19 +23,11 @@ noanswer = ["Sorry, can't understand you", "Please give me more info", "Not sure
 goodbye = ["See you!", "Have a nice day", "Bye! Come back again soon.", "Bye", "Cya!"]
 
 def run_alexa(command):
-    greet = True
-    bye = True
-    if greet:
-        for a in ["hi", "how are you", "is anyone there?","hey","hola", "hello", "good day"]:
-            if a in command:
-                msg = greeting[(random.randint(0,len(greeting)-1))]
-                greet = False
+    if a in command for a in ["hi", "how are you", "is anyone there?","hey","hola", "hello", "good day"]:
+        msg = greeting[(random.randint(0,len(greeting)-1))]
 
-    if bye:
-        for a in ["bye", "see you later", "goodbye", "nice chatting to you, bye", "till next time"]:
-            if a in command:
-                msg = goodbye[(random.randint(0,len(goodbye)-1))]
-                bye = False
+    elif a in command for a in ["bye", "see you later", "goodbye", "nice chatting to you, bye", "till next time"]:
+        msg = goodbye[(random.randint(0,len(goodbye)-1))]
 
 
     elif 'play' in command:
