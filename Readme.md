@@ -52,5 +52,5 @@ Using localtunnel on Pi:
 
 sudo npm install -g localtunnel
 
-lt -p 5000 -s prism
+nohup lt -p 5000 -s prism
 
