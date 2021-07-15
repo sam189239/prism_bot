@@ -31,3 +31,14 @@ modified code to be suitable for web chatbot
 added covid updates from https://covid19.who.int/region/searo/country/in
 displayed yt link for playing
 added hardcoded general responses
+
+14-07-2021:
+Set up Raspberry Pi to use as a server, ran app on localhost.
+Fixed errors in previoius methods.
+
+15-07-2021:
+Used Ngrok to set up public server.
+Used https://vatsalyagoel.com/setting-up-a-public-web-server-using-a-raspberry-pi-3/ to set up ngrok.
+Exposed port and accessed remotely.
+Setting up background process to close terminal after running.
+
