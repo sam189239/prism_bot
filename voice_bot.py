@@ -74,23 +74,34 @@ def give_sec_command():
 def run_alexa(command):
     
     # command = give_command()
+    greet = False
+    bye = False
+    for a in ["hi", "how are you", "is anyone there?","hey","hola", "hello", "good day"]:
+        if a in command:
+            talk(greeting[(random.randint(0,len(greeting)-1))])
+            greet = True
             
-    greet = True
-    bye = True
-    if greet:
-        for a in ["hi", "how are you", "is anyone there?","hey","hola", "hello", "good day"]:
-            if a in command:
-                talk(greeting[(random.randint(0,len(greeting)-1))])
-                greet = False
+    for a in ["bye", "see you later", "goodbye", "nice chatting to you, bye", "till next time"]:
+        if a in command :
+            talk(goodbye[(random.randint(0,len(goodbye)-1))])
+            bye = True
+            
+#     greet = True
+#     bye = True
+#     if greet:
+#         for a in ["hi", "how are you", "is anyone there?","hey","hola", "hello", "good day"]:
+#             if a in command:
+#                 talk(greeting[(random.randint(0,len(greeting)-1))])
+#                 greet = False
 
-    if bye:
-        for a in ["bye", "see you later", "goodbye", "nice chatting to you, bye", "till next time"]:
-            if a in command:
-                talk(goodbye[(random.randint(0,len(goodbye)-1))])
-                bye = False
+#     if bye:
+#         for a in ["bye", "see you later", "goodbye", "nice chatting to you, bye", "till next time"]:
+#             if a in command:
+#                 talk(goodbye[(random.randint(0,len(goodbye)-1))])
+#                 bye = False
 
     
-    elif 'play' in command:
+    if 'play' in command:
         song  = command.replace('play','')
         word = 'playing' + song
         talk(word)
