@@ -42,3 +42,8 @@ Used https://vatsalyagoel.com/setting-up-a-public-web-server-using-a-raspberry-p
 Exposed port and accessed remotely.
 Setting up background process to close terminal after running.
 
+Running ngrok:
+ngrok http 5000
+
+
+
