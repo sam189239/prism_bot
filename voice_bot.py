@@ -190,7 +190,7 @@ def run_alexa(command):
             print("From Wikipedia:")
             talk(data)
     
-    else:
+    elif not greet and not bye:
         talk(noanswer[(random.randint(0,len(noanswer)-1))])
 
 command = give_command()
