@@ -18,6 +18,9 @@ npm install pm2@latest -g
 
 pm2 start app.py --interpreter python3
 
+for voice bot, 
+sudo apt install espeak
+
 Progress:
 
 11-07-2021: 
