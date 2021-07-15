@@ -99,9 +99,11 @@ def run_alexa(command):
 #             if a in command:
 #                 talk(goodbye[(random.randint(0,len(goodbye)-1))])
 #                 bye = False
-
+    if 'who are you' or 'what are you' in command:
+        msg = "I am a basic Info Bot. Soon to be an intelligent assistant."
+      
     
-    if 'play' in command:
+    elif 'play' in command:
         song  = command.replace('play','')
         word = 'playing' + song
         talk(word)
