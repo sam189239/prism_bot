@@ -100,7 +100,7 @@ def run_alexa(command):
 #                 talk(goodbye[(random.randint(0,len(goodbye)-1))])
 #                 bye = False
     if 'who are you' or 'what are you' in command:
-        msg = "I am a basic Info Bot. Soon to be an intelligent assistant."
+        talk("I am a basic Info Bot. Soon to be an intelligent assistant.")
       
     
     elif 'play' in command:
