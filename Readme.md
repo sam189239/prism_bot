@@ -1,6 +1,8 @@
 Prism:
 A info bot. Currently, works based on keywords. NLP capabilities to be added.
 
+https://prism.loca.lt/
+
 Commands:
 
 Greet, 
