@@ -10,11 +10,11 @@ News (Latest, World, Business, Sports, Tech, Entertainment, ...),
 Covid updates
 
 
-Deploying on AWS using PM2:
+Deploying in background using PM2: (AWS and PI)
 
 sudo apt install npm
 
-npm install pm2@latest -g
+sudo npm install pm2@latest -g
 
 pm2 start app.py --interpreter python3
 
@@ -48,5 +48,9 @@ Setting up background process to close terminal after running.
 Running ngrok:
 ngrok http 5000
 
+Using localtunnel on Pi:
 
+sudo npm install -g localtunnel
+
+lt -p 5000 -s prism
 
