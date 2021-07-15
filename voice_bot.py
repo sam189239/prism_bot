@@ -10,7 +10,7 @@ import json
 import random
 import re
 
-with open('toi_feed_links.json', 'r') as myfile:
+with open('data/toi_feed_links.json', 'r') as myfile:
     data = myfile.read()
 feed_links = json.loads(data)
 
@@ -183,4 +183,4 @@ def run_alexa(command):
         talk(noanswer[(random.randint(0,len(noanswer)-1))])
 
 command = give_command()
-run_alexa()
+run_alexa(command)
