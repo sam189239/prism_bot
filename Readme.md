@@ -23,6 +23,17 @@ pm2 start app.py --interpreter python3
 for voice bot, 
 sudo apt install espeak
 
+
+Running ngrok: (not used)
+
+ngrok http 5000
+
+Using localtunnel on Pi:
+
+sudo npm install -g localtunnel
+
+nohup lt -p 5000 -s prism
+
 Progress:
 
 11-07-2021: 
@@ -46,15 +57,6 @@ Used Ngrok to set up public server.
 Used https://vatsalyagoel.com/setting-up-a-public-web-server-using-a-raspberry-pi-3/ to set up ngrok.
 Exposed port and accessed remotely.
 Setting up background process to close terminal after running.
-
-Running ngrok:
-ngrok http 5000
-
-Using localtunnel on Pi:
-
-sudo npm install -g localtunnel
-
-nohup lt -p 5000 -s prism
 
 16-07-2021:
 Made yt links clickable.
