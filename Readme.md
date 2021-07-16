@@ -56,3 +56,6 @@ sudo npm install -g localtunnel
 
 nohup lt -p 5000 -s prism
 
+16-07-2021:
+Made yt links clickable.
+Should look into metrics and alerts.
