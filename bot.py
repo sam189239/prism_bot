@@ -44,7 +44,7 @@ def run_alexa(command):
         # talk(word)
         #msg = 'playing' + song
         link = kt.playonyt(song, open_video = False)
-        msg = 'Playing: <a href="'+link+'"> Click! </a>'
+        msg = 'Click <a href="'+link+'"> here </a> to play on YouTube.'
         webbrowser.open_new_tab(link)
 
     elif 'time' in command:
