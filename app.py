@@ -16,10 +16,10 @@ def index():
     return render_template("index.html")
 
 @app.route("/get")
-#function for the bot response
-def get_bot_response():
+#function for the bot response 
+def get_bot_response(): 
     userText = request.args.get('msg').lower()
     return str(bot.run_alexa(userText))
 
 if __name__ == "__main__":
-    app.run(host = '0.0.0.0', port = '5000', debug = 'True')
+    app.run(host = '0.0.0.0', port = '5000', debug = 'True') 

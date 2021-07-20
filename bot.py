@@ -9,6 +9,7 @@ import re
 import webbrowser
 import random
 
+weather_feed = "https://weather-broker-cdn.api.bbci.co.uk/en/forecast/rss/3day/1264527"
 
 with open('data/toi_feed_links.json', 'r') as myfile:
     data = myfile.read()
@@ -37,7 +38,26 @@ def run_alexa(command):
             
     if 'who are you' in command:
         msg = "I am a basic Info Bot. Soon to be an intelligent assistant."
-        
+    
+    elif 'weather' and 'tomorrow' in command:
+        feed = feedparser.parse(weather_feed)
+        msg = ""
+        msg += feed.entries[1].title[:-67] + "<br>"
+        msg += feed.entries[1].summary
+
+    elif 'weather' and 'day after' in command:
+        feed = feedparser.parse(weather_feed)
+        msg = ""
+        msg += feed.entries[2].title[:-67] + "<br>"
+        msg += feed.entries[2].summary
+    
+    elif 'weather' in command:
+        feed = feedparser.parse(weather_feed)
+        msg = ""
+        msg += feed.entries[0].title[:-34] + "<br>"
+        msg += feed.entries[0].summary
+
+
     elif 'play' in command:
         song  = command.replace('play','')
         # word = 'playing' + song
@@ -67,12 +87,11 @@ def run_alexa(command):
         if len(NewsFeed.entries)<2:
             msg = "Sorry, couldn't find any entries."
         else:
-            msg = "Found " + str(len(NewsFeed.entries)) + " entries\n"
+            msg = "Found " + str(len(NewsFeed.entries)) + " entries <br><br>"
         
         for i in range(2):
             entry = NewsFeed.entries[i]
-            msg += entry.title + "\n" + entry.summary + "\n\n"
-            
+            msg += entry.title + "<br>" + entry.summary + "<br><br>"
 
     elif 'covid' in command:
         import urllib.request as ul
@@ -88,18 +107,13 @@ def run_alexa(command):
         pagesoup = soup(htmldata, "html.parser")
         headings = pagesoup.findAll('span', {"class":"sc-fzoYHE dZCNaz"})
         values = pagesoup.findAll('span', {"class":"sc-fznAgC jiWVsa"})
+        vaccine_doses = pagesoup.findAll('span', {"class":"sc-prOVx fSlcrp"})
 
         flag=1
         msg = "In India: "
-        for a,b in headings, values:   
-            a = (re.sub('<[^>]*>', '', str(a)))
-            b = (re.sub('<[^>]*>', '', str(b))) 
-            if flag:
-                msg += (a +",\t"+ b + "\n = ")
-                flag -= 1
-            else:
-                msg += (a +",\t"+ b + "\n")
-        
+        msg += ("Confirmed Cases: " + (re.sub('<[^>]*>', '', str(values[0]))) ) + "<br>"
+        msg += ("Deaths: " + (re.sub('<[^>]*>', '', str(values[1]))) ) + "<br>"
+        msg += ("Vaccine Doses administered: " + (re.sub('<[^>]*>', '', str(vaccine_doses[1])[:-20])))
 
     elif 'who is' in command:
         person = command.replace('who is','')
@@ -108,7 +122,7 @@ def run_alexa(command):
             data = wikipedia.summary(person,1)
             # print("From Wikipedia:")
             # talk(data)
-            msg = "From Wikipedia: \n"+ data
+            msg = "From Wikipedia: <br>"+ data
     elif not greet and not bye:
         # talk("Going to sleep!")
         # msg = "Going to sleep!"
