@@ -2,7 +2,7 @@
 from flask import Flask, render_template, request
 # from chatterbot import ChatBot
 # from chatterbot.trainers import ChatterBotCorpusTrainer
-import bot
+from functions import bot
 
 app = Flask(__name__)
 #create chatbot
