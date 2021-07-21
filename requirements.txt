@@ -2,7 +2,7 @@
 # pyttsx3
 # PyAudio
 feedparser
-pywhatkit
+# pywhatkit
 # django
 # pip install pipwin
 # pipwin install pyaudio
