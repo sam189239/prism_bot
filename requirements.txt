@@ -13,4 +13,4 @@ flask
 # chatterbot
 regex
 gunicorn
-PIL
+pillow
