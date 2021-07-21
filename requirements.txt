@@ -12,3 +12,4 @@ flask
 # chatterbot-corpus
 # chatterbot
 regex
+gunicorn
