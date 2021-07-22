@@ -16,3 +16,4 @@ gunicorn
 pillow
 requests
 wikipedia
+pytz
