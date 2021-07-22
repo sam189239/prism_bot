@@ -1,6 +1,6 @@
 import time
 import webbrowser as web
-import pyautogui as pg
+# import pyautogui as pg
 import wikipedia
 import requests
 import os
@@ -21,7 +21,7 @@ else:
     pass
 
 last = time.time()
-pg.FAILSAFE = False
+# pg.FAILSAFE = False
 sleep_time = "None, You can use this function to print the remaining time in seconds."
 path = ""
 current_path = os.getcwd()
