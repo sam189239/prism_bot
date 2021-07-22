@@ -15,6 +15,5 @@ regex
 gunicorn
 pillow
 requests
-json
 webbrowser
 wikipedia
