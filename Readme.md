@@ -1,5 +1,6 @@
 Prism:
 A info bot. Currently, works based on keywords. NLP capabilities to be added.
+Deployed on AWS EC2, Herokuapp, PI (exposed using localtunnel).
 
 https://prism.loca.lt/
 
