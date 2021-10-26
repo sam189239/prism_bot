@@ -9,7 +9,7 @@ https://prism.loca.lt/
 
 Commands:
 
-Greet, 
+Greet,  
 Goodbye, 
 Time, 
 News (Latest, World, Business, Sports, Tech, Entertainment, ...), 
@@ -17,7 +17,7 @@ Covid updates
 
 
 Deploying in background using PM2: (AWS and PI)
-
+ 
 sudo apt install npm
 
 sudo npm install pm2@latest -g
