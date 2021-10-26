@@ -11,9 +11,18 @@ app = Flask(__name__)
 # trainer.train("chatterbot.corpus.english") #train the chatter bot for english
 
 #define app routes
+
 @app.route("/")
 def index():
     return render_template("index.html")
+
+@app.route("/chatbot")
+def chatbot():
+    return render_template("chatbot.html")
+
+@app.route("/chatbot/options")
+def options():
+    return "Instructions\n1.\n2.\n3.\n4."
 
 @app.route("/get")
 #function for the bot response 
