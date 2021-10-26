@@ -9,7 +9,7 @@ https://prism.loca.lt/
 
 Commands:
 
-Greet,  
+Greet,
 Goodbye, 
 Time, 
 News (Latest, World, Business, Sports, Tech, Entertainment, ...), 
